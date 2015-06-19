@@ -1,0 +1,19 @@
+p#notice = notice
+
+p
+  strong Slug:
+  = @template.slug
+p
+  strong Name:
+  = @template.name
+p
+  strong Tags:
+  = @template.tags
+
+p = render 'versions/versions', versions: @versions
+
+= link_to 'Add Version', new_template_version_path(@template)
+'|
+= link_to 'Edit', edit_template_path(@template)
+'|
+= link_to 'Back', templates_path

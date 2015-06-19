@@ -1,0 +1,25 @@
+h1 Listing stacks
+
+table
+  thead
+    tr
+      th Slug
+      th Name
+      th Tags
+      th
+      th
+      th
+
+  tbody
+    - @stacks.each do |stack|
+      tr
+        td = stack.slug
+        td = stack.name
+        td = stack.tags
+        td = link_to 'Show', stack
+        td = link_to 'Edit', edit_stack_path(stack)
+        td = link_to 'Destroy', stack, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Stack', new_stack_path

@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Slug:
+  = @stack.slug
+p
+  strong Name:
+  = @stack.name
+p
+  strong Tags:
+  = @stack.tags
+
+= link_to 'Edit', edit_stack_path(@stack)
+'|
+= link_to 'Back', stacks_path

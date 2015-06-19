@@ -1,0 +1,10 @@
+h1 Home
+
+p
+  = link_to 'Add Template', new_template_path
+  '|
+  = link_to 'Add Stack', new_stack_path
+
+ul = render partial: 'item', collection: @items
+
+

@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  root 'home#index'
+  resources :stacks
+  resources :templates do
+    resources :versions, shallow: true do
+      member do
+        get 'pdf'
+        get 'in_design'
+      end
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

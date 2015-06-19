@@ -1,0 +1,14 @@
+= simple_form_for(@version, url: @version.persisted? ? version_path(@version) : template_versions_path(@version.template)) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :description
+
+  .form-inputs
+    = f.input :pdf_template, as: :file
+
+  .form-inputs
+    = f.input :in_design_source, as: :file
+
+  .form-actions
+    = f.button :submit
