@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  resources :selectors
+  resources :profiles
   root 'home#index'
   resources :folders do
     resources :stacks, only: %i(new create)
     resources :templates, only: %i(new create)
+    resources :selectors, only: %i(new create)
     resources :folders, only: %i(new create)
   end
   resources :stacks

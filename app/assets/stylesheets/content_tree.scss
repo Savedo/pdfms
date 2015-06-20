@@ -1,4 +1,7 @@
 .nav.content-tree {
+  .glyphicon {
+    padding-right: 5px;
+  }
   .node.node-folder-closed {
     &>a .glyphicon-folder-open { display: none; }
     &>.children { display: none; }

@@ -1,0 +1,25 @@
+h1 Listing selectors
+
+table
+  thead
+    tr
+      th Slug
+      th Name
+      th Tags
+      th
+      th
+      th
+
+  tbody
+    - @selectors.each do |selector|
+      tr
+        td = selector.slug
+        td = selector.name
+        td = selector.tags
+        td = link_to 'Show', selector
+        td = link_to 'Edit', edit_selector_path(selector)
+        td = link_to 'Destroy', selector, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Selector', new_selector_path

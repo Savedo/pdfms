@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Slug:
+  = @selector.slug
+p
+  strong Name:
+  = @selector.name
+p
+  strong Tags:
+  = @selector.tags
+
+= link_to 'Edit', edit_selector_path(@selector)
+'|
+= link_to 'Back', selectors_path
