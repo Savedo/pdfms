@@ -1,5 +1,7 @@
 class TemplatesController < ApplicationController
-  before_action :set_template, only: [:show, :edit, :update, :destroy]
+  include FoldableItemController
+
+  before_action :set_template, only: [:show, :edit, :update, :destroy, :pdf, :source]
 
   # GET /templates
   # GET /templates.json
@@ -7,15 +9,18 @@ class TemplatesController < ApplicationController
     @templates = Template.all
   end
 
-  # GET /templates/1
-  # GET /templates/1.json
-  def show
-    @versions = @template.versions.order(:id)
+  def pdf
+    redirect_to @template.pdf.url
   end
+
+  def source
+    redirect_to @template.source.url
+  end
+
 
   # GET /templates/new
   def new
-    @template = Template.new
+    @template = Template.new(folder: @parent_folder)
   end
 
   # GET /templates/1/edit
@@ -25,7 +30,7 @@ class TemplatesController < ApplicationController
   # POST /templates
   # POST /templates.json
   def create
-    @template = Template.new(template_params)
+    @template = Template.new(template_params.merge(folder: @parent_folder))
 
     respond_to do |format|
       if @template.save
@@ -65,11 +70,11 @@ class TemplatesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_template
-      @template = Template.find_by(slug: params[:id])
+      @template = Template.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def template_params
-      params.require(:template).permit(:slug, :name, :tags)
+      params.require(:template).permit(:slug, :name, :tags, :pdf, :source)
     end
 end

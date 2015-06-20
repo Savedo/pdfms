@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
   root 'home#index'
+  resources :folders do
+    resources :stacks, only: %i(new create)
+    resources :templates, only: %i(new create)
+    resources :folders, only: %i(new create)
+  end
   resources :stacks
   resources :templates do
-    resources :versions, shallow: true do
-      member do
-        get 'pdf'
-        get 'in_design'
-      end
+    member do
+      get 'pdf'
+      get 'source'
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

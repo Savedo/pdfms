@@ -28,6 +28,7 @@ gem 'slim-rails'
 gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'paperclip'
+gem 'jquery-turbolinks'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -37,6 +38,8 @@ gem 'paperclip'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+gem 'quiet_assets', group: :development
 
 group :development, :test do
   gem 'rspec-rails'

@@ -1,0 +1,24 @@
+html
+  head
+    title PdfCms
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  body
+    nav class="navbar navbar-inverse navbar-fixed-top"
+      .container-fluid
+        .navbar-header
+          button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"
+            span class="sr-only" Toggle navigation
+            span class="icon-bar"
+            span class="icon-bar"
+            span class="icon-bar"
+          = link_to "PdfCms", root_url, class: 'navbar-brand'
+        .navbar-right.navbar-form
+          .form-group = link_to "Add Template", new_template_path, class: 'btn btn-success', remote: true
+          .form-group = link_to "Add Stack", new_stack_path, class: 'btn btn-success', remote: true
+          .form-group = link_to "Add Folder", new_folder_path, class: 'btn btn-success', remote: true
+    .container-fluid
+      .row
+        .col-sm-6.col-md-3.sidebar = build_and_render_content_tree
+        .col-sm-6.col-sm-offset-6.col-md-9.col-md-offset-3.main = yield

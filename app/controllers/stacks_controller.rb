@@ -1,4 +1,6 @@
 class StacksController < ApplicationController
+  include FoldableItemController
+
   before_action :set_stack, only: [:show, :edit, :update, :destroy]
 
   # GET /stacks
@@ -7,14 +9,9 @@ class StacksController < ApplicationController
     @stacks = Stack.all
   end
 
-  # GET /stacks/1
-  # GET /stacks/1.json
-  def show
-  end
-
   # GET /stacks/new
   def new
-    @stack = Stack.new
+    @stack = Stack.new(folder: @parent_folder)
   end
 
   # GET /stacks/1/edit
@@ -24,7 +21,7 @@ class StacksController < ApplicationController
   # POST /stacks
   # POST /stacks.json
   def create
-    @stack = Stack.new(stack_params)
+    @stack = Stack.new(stack_params.merge(folder: @parent_folder))
 
     respond_to do |format|
       if @stack.save
@@ -64,7 +61,7 @@ class StacksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_stack
-      @stack = Stack.find_by(slug: params[:id])
+      @stack = Stack.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

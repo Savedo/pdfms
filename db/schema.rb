@@ -11,19 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150619182004) do
+ActiveRecord::Schema.define(version: 20150620111853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "items", force: :cascade do |t|
-    t.string   "type",       limit: 255
-    t.string   "slug",       limit: 255
-    t.string   "name",       limit: 255
-    t.string   "tags"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+  create_table "folders", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "parent_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
+
+  create_table "items", force: :cascade do |t|
+    t.string   "type",                limit: 255
+    t.string   "slug",                limit: 255
+    t.string   "name",                limit: 255
+    t.string   "tags"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "pdf_file_name"
+    t.string   "pdf_content_type"
+    t.integer  "pdf_file_size"
+    t.datetime "pdf_updated_at"
+    t.string   "source_file_name"
+    t.string   "source_content_type"
+    t.integer  "source_file_size"
+    t.datetime "source_updated_at"
+    t.integer  "folder_id"
+  end
+
+  add_index "items", ["folder_id"], name: "index_items_on_folder_id", using: :btree
 
   create_table "stack_items", force: :cascade do |t|
     t.integer  "stack_id"
@@ -35,22 +53,5 @@ ActiveRecord::Schema.define(version: 20150619182004) do
 
   add_index "stack_items", ["item_id"], name: "index_stack_items_on_item_id", using: :btree
   add_index "stack_items", ["stack_id"], name: "index_stack_items_on_stack_id", using: :btree
-
-  create_table "versions", force: :cascade do |t|
-    t.string   "description",                   limit: 255
-    t.integer  "template_id"
-    t.datetime "created_at",                                null: false
-    t.datetime "updated_at",                                null: false
-    t.string   "pdf_template_file_name"
-    t.string   "pdf_template_content_type"
-    t.integer  "pdf_template_file_size"
-    t.datetime "pdf_template_updated_at"
-    t.string   "in_design_source_file_name"
-    t.string   "in_design_source_content_type"
-    t.integer  "in_design_source_file_size"
-    t.datetime "in_design_source_updated_at"
-  end
-
-  add_index "versions", ["template_id"], name: "index_versions_on_template_id", using: :btree
 
 end

@@ -1,0 +1,12 @@
+= simple_form_for(@template, url: @parent_folder ? folder_templates_path(@parent_folder) : templates_path) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :slug
+    = f.input :name
+    = f.input :tags
+    = f.input :pdf, as: :file
+    = f.input :source, as: :file
+
+  .form-actions
+    = f.button :submit

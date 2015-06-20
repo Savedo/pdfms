@@ -1,9 +1,0 @@
-tr
-  td = "##{ version.id }"
-  td = version.created_at
-  td = version.description
-  td = link_to 'PDF', pdf_version_path(version), target: '_blank'
-  td = link_to 'InDesign', in_design_version_path(version), target: '_blank'
-  td = link_to 'Show', version
-  td = link_to 'Edit', edit_version_path(version)
-  td = link_to 'Destroy', version, data: {:confirm => 'Are you sure?'}, :method => :delete

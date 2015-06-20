@@ -1,0 +1,29 @@
+.nav.content-tree {
+  .node.node-folder-closed {
+    &>a .glyphicon-folder-open { display: none; }
+    &>.children { display: none; }
+  }
+
+  .node.node-folder-open {
+    &>a .glyphicon-folder-close { display: none; }
+    &>.children { display: block; }
+  }
+
+  .children {
+    margin-left: 20px;
+  }
+
+  ul { list-style-type: none; }
+
+  li > a {
+    display: block;
+
+    &.active > a,
+    &.active > a:hover,
+    &.active > a:focus {
+      color: #fff;
+      background-color: #428bca;
+    }
+  }
+
+}
