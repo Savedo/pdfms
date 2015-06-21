@@ -31,9 +31,11 @@ class SelectorsController < ApplicationController
     respond_to do |format|
       if @selector.save
         format.html { redirect_to @selector, notice: 'Selector was successfully created.' }
+        format.js { render :show, notice: 'Selector was successfully created.' }
         format.json { render :show, status: :created, location: @selector }
       else
         format.html { render :new }
+        format.js { render :new }
         format.json { render json: @selector.errors, status: :unprocessable_entity }
       end
     end
@@ -45,9 +47,11 @@ class SelectorsController < ApplicationController
     respond_to do |format|
       if @selector.update(selector_params)
         format.html { redirect_to @selector, notice: 'Selector was successfully updated.' }
+        format.js { render :show, notice: 'Selector was successfully updated.' }
         format.json { render :show, status: :ok, location: @selector }
       else
         format.html { render :edit }
+        format.js { render :edit }
         format.json { render json: @selector.errors, status: :unprocessable_entity }
       end
     end

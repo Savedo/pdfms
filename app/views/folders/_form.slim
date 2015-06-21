@@ -1,9 +1,2 @@
-= simple_form_for(@folder, url: @parent_folder ? folder_folders_path(@parent_folder) : folders_path) do |f|
-  = f.error_notification
-
-  .form-inputs
-    = f.input :name
-    = f.input :parent_id
-
-  .form-actions
-    = f.button :submit
+== render_dressed_item_form(@folder) do |f|
+  = f.input :name

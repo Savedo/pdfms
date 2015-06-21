@@ -26,9 +26,11 @@ class StacksController < ApplicationController
     respond_to do |format|
       if @stack.save
         format.html { redirect_to @stack, notice: 'Stack was successfully created.' }
+        format.js { render :show, notice: 'Stack was successfully created.' }
         format.json { render :show, status: :created, location: @stack }
       else
         format.html { render :new }
+        format.js { render :new }
         format.json { render json: @stack.errors, status: :unprocessable_entity }
       end
     end
@@ -40,9 +42,11 @@ class StacksController < ApplicationController
     respond_to do |format|
       if @stack.update(stack_params)
         format.html { redirect_to @stack, notice: 'Stack was successfully updated.' }
+        format.js { render :show, notice: 'Stack was successfully updated.' }
         format.json { render :show, status: :ok, location: @stack }
       else
         format.html { render :edit }
+        format.js { render :edit }
         format.json { render json: @stack.errors, status: :unprocessable_entity }
       end
     end

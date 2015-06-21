@@ -35,9 +35,11 @@ class FoldersController < ApplicationController
     respond_to do |format|
       if @folder.save
         format.html { redirect_to @folder, notice: 'Folder was successfully created.' }
+        format.js { render :show, notice: 'Folder was successfully created.' }
         format.json { render :show, status: :created, location: @folder }
       else
         format.html { render :new }
+        format.js {  render :new }
         format.json { render json: @folder.errors, status: :unprocessable_entity }
       end
     end
@@ -49,9 +51,11 @@ class FoldersController < ApplicationController
     respond_to do |format|
       if @folder.update(folder_params)
         format.html { redirect_to @folder, notice: 'Folder was successfully updated.' }
+        format.js { render :show, notice: 'Folder was successfully updated.' }
         format.json { render :show, status: :ok, location: @folder }
       else
         format.html { render :edit }
+        format.js { render :edit }
         format.json { render json: @folder.errors, status: :unprocessable_entity }
       end
     end

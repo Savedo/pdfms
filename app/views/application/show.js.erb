@@ -1,2 +1,5 @@
 $('.main').html(<%= render_js_string(partial: 'show') %>)
+<% if flash.present? %>
+    $('.main').prepend(<%= render_flash.to_json.html_safe %>)
+<% end %>
 $('.selector-host').selectorHost()
