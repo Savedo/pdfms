@@ -15,7 +15,7 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/new
   def new
-    @profile = Profile.new
+    @profile = Profile.new(place: Profile.count + 1)
   end
 
   # GET /profiles/1/edit
@@ -70,6 +70,6 @@ class ProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:name)
+      params.require(:profile).permit(:name, :slug, :place)
     end
 end

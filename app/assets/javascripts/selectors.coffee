@@ -1,3 +1,7 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$ ->
+  $.fn.selectorHost = ->
+    @each ->
+      console.log $('.item-placeholder', @)
+      $('.item-placeholder', @).droppable
+        accept: '.item'
+        activeClass: 'is-acvive'

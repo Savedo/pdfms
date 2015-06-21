@@ -8,7 +8,7 @@ module ContentTreeHelper
   end
 
   def render_content_tree_node(node)
-    content_tag_for(:li, node.item, class: ['node',('node-folder-closed' if node.folder? )] ) do
+    content_tag_for(:li, node.item, class: ['node', (node.folder?  ? 'node-folder-closed' : 'item')] ) do
       content_tree_node_content(node) + (node.folder? ? render_content_tree_node_children(node.children) : ''.html_safe)
     end
   end

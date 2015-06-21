@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150620172629) do
+ActiveRecord::Schema.define(version: 20150621120858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,10 +43,24 @@ ActiveRecord::Schema.define(version: 20150620172629) do
 
   add_index "items", ["folder_id"], name: "index_items_on_folder_id", using: :btree
 
+  create_table "profile_selector_items", force: :cascade do |t|
+    t.integer  "profile_id"
+    t.integer  "selector_id"
+    t.integer  "item_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "profile_selector_items", ["item_id"], name: "index_profile_selector_items_on_item_id", using: :btree
+  add_index "profile_selector_items", ["profile_id"], name: "index_profile_selector_items_on_profile_id", using: :btree
+  add_index "profile_selector_items", ["selector_id"], name: "index_profile_selector_items_on_selector_id", using: :btree
+
   create_table "profiles", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "slug"
+    t.integer  "place"
   end
 
   create_table "stack_items", force: :cascade do |t|

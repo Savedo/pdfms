@@ -9,6 +9,11 @@ class SelectorsController < ApplicationController
     @selectors = Selector.all
   end
 
+  def show
+    @profiles = Profile.order(:place)
+    super
+  end
+
   # GET /selectors/new
   def new
     @selector = Selector.new(folder: @parent_folder)

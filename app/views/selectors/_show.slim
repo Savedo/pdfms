@@ -10,6 +10,16 @@ p
   strong Tags:
   = @selector.tags
 
+table.table.selector-host
+  thead
+    tr
+      th width="150px" Profile
+      th Item
+  tbody
+    - @profiles.each do |profile|
+      tr
+        td = profile.name
+        td.item-placeholder data-provider-id="#{ profile.id }"
+
 = link_to 'Edit', edit_selector_path(@selector)
-'|
-= link_to 'Back', selectors_path
+

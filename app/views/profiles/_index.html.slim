@@ -1,8 +1,10 @@
 h1 Listing profiles
 
-table
+table.table
   thead
     tr
+      th Place
+      th Slug
       th Name
       th
       th
@@ -11,6 +13,8 @@ table
   tbody
     - @profiles.each do |profile|
       tr
+        td = profile.place
+        td = profile.slug
         td = profile.name
         td = link_to 'Show', profile
         td = link_to 'Edit', edit_profile_path(profile)
