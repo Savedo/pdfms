@@ -63,6 +63,8 @@ module ItemsHelper
   end
 
   def render_item_form_actions(item, f)
-    f.button(:submit) + link_to('Cancel', item, class: 'btn btn-default', remote: true)
+    content_tag(:div, class: 'form-actions') do
+      f.button(:submit, class: %w(btn btn-primary)) + link_to('Cancel', item, class: 'btn btn-default', remote: true)
+    end
   end
 end
