@@ -1,0 +1,8 @@
+table.table
+  thead
+    tr
+      th Content
+  tbody
+    - @folder_items.each do |item|
+      tr
+        td = link_to(item_icon_tag(item) + ' ' + item.name, item, remote: true)

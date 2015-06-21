@@ -64,9 +64,11 @@ class TemplatesController < ApplicationController
   # DELETE /templates/1per
   # DELETE /templates/1.json
   def destroy
+    @folder = @template.folder
     @template.destroy
     respond_to do |format|
-      format.html { redirect_to root_url, notice: 'Template was successfully destroyed.' }
+      format.html { redirect_to @folder, notice: 'Template was successfully destroyed.' }
+      format.js { render partial: 'folders/show', notice: 'Template was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -12,10 +12,8 @@ class FoldersController < ApplicationController
   # GET /folders/1
   # GET /folders/1.json
   def show
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    @folder_items = @folder.subfolders.order(:name).to_a + @folder.items.order(:name).to_a
+    super
   end
 
   # GET /folders/new
