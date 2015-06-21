@@ -30,6 +30,7 @@ class SelectorsController < ApplicationController
 
     respond_to do |format|
       if @selector.save
+        @profiles = Profile.order(:place)
         format.html { redirect_to @selector, notice: 'Selector was successfully created.' }
         format.js { render :show, notice: 'Selector was successfully created.' }
         format.json { render :show, status: :created, location: @selector }
@@ -46,6 +47,7 @@ class SelectorsController < ApplicationController
   def update
     respond_to do |format|
       if @selector.update(selector_params)
+        @profiles = Profile.order(:place)
         format.html { redirect_to @selector, notice: 'Selector was successfully updated.' }
         format.js { render :show, notice: 'Selector was successfully updated.' }
         format.json { render :show, status: :ok, location: @selector }
