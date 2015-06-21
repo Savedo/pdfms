@@ -30,18 +30,14 @@ class TemplatesController < ApplicationController
   # POST /templates
   # POST /templates.json
   def create
-    p 'Hello 0'
-
     @template = Template.new(template_params.merge(folder: @parent_folder))
 
     respond_to do |format|
       if @template.save
-        p 'Hello 1'
-        format.html { redirect_to root_url, notice: 'Template was successfully created.' }
+        format.html { redirect_to @template, notice: 'Template was successfully created.' }
         format.js {  render :show, notice: 'Template was successfully created.' }
         format.json { render :show, status: :created, location: @template }
       else
-        p 'Hello 2'
         format.html { render :new }
         format.js { render :new }
         format.json { render json: @template.errors, status: :unprocessable_entity }
@@ -54,7 +50,7 @@ class TemplatesController < ApplicationController
   def update
     respond_to do |format|
       if @template.update(template_params)
-        format.html { redirect_to root_url, notice: 'Template was successfully updated.' }
+        format.html { redirect_to @template, notice: 'Template was successfully updated.' }
         format.js { render :show, notice: 'Template was successfully updated.' }
         format.json { render :show, status: :ok, location: @template }
       else
