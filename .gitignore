@@ -19,4 +19,4 @@
 /db/database.yml
 
 # Ignore local stored files
-public/system
+/public/system
