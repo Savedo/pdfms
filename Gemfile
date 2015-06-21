@@ -40,7 +40,10 @@ gem 'jquery-ui-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'quiet_assets', group: :development
+group :development do
+  gem 'quiet_assets'
+  gem 'meta_request'
+end
 
 group :development, :test do
   gem 'rspec-rails'

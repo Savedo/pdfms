@@ -20,4 +20,6 @@ html
     .container-fluid
       .row
         .col-sm-6.col-md-3.sidebar = build_and_render_content_tree
-        .col-sm-6.col-sm-offset-6.col-md-9.col-md-offset-3.main = yield
+        .col-sm-6.col-sm-offset-6.col-md-9.col-md-offset-3.main
+          p#notice = notice
+          = yield

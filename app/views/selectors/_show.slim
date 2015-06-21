@@ -1,14 +1,4 @@
-p#notice = notice
-
-p
-  strong Slug:
-  = @selector.slug
-p
-  strong Name:
-  = @selector.name
-p
-  strong Tags:
-  = @selector.tags
+= render_show_header(@selector)
 
 table.table.selector-host
   thead
@@ -20,6 +10,4 @@ table.table.selector-host
       tr
         td = profile.name
         td.item-placeholder data-provider-id="#{ profile.id }"
-
-= link_to 'Edit', edit_selector_path(@selector)
 

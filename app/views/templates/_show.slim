@@ -1,21 +1,7 @@
-p#notice = notice
+= render_show_header(@template)
 
 p
-  strong Slug:
-  = @template.slug
-p
-  strong Name:
-  = @template.name
-p
-  strong Tags:
-  = @template.tags
-p
-  strong Template:
-  = link_to 'PDF', pdf_template_path(@template), target: '_blank'
-p
-  strong Source:
-  = link_to 'Source', source_template_path(@template), target: '_blank'
+  = link_to 'Open PDF', pdf_template_path(@template), class: 'btn btn-primary', target: '_blank'
+  '
+  = link_to 'Open Source', source_template_path(@template), class: 'btn btn-primary', target: '_blank'
 
-= link_to 'Edit', edit_template_path(@template)
-'|
-= link_to 'Back', templates_path

@@ -1,15 +1,4 @@
-p#notice = notice
-
-p
-  strong Name:
-  = @folder.name
-p
-  strong Parent:
-  = @folder.parent_id
-
-= link_to 'Edit', edit_folder_path(@folder)
-'|
-= link_to 'Back', folders_path
+= render_show_header(@folder)
 
 p
   = link_to 'Add Stack', new_folder_stack_path(@folder), class: 'btn btn-success', remote: true
