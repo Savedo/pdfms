@@ -9,12 +9,6 @@ class FoldersController < ApplicationController
     @folders = Folder.all
   end
 
-  # GET /folders/1
-  # GET /folders/1.json
-  def show
-    @folder_items = @folder.subfolders.order(:name).to_a + @folder.items.order(:name).to_a
-    super
-  end
 
   # GET /folders/new
   def new

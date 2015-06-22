@@ -9,4 +9,4 @@ p
   '
   = link_to "Add Folder", new_folder_path, class: 'btn btn-success', remote: true
 
-= render 'folders/items'
+= render partial: 'folders/items', locals: { folder: nil }

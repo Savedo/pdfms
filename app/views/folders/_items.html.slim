@@ -3,6 +3,6 @@ table.table
     tr
       th Content
   tbody
-    - @folder_items.each do |item|
+    - CollectFolderItems.new(folder).execute.each do |item|
       tr
         td = link_to(item_icon_tag(item) + ' ' + item.name, item, remote: true)

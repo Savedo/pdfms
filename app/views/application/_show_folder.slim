@@ -1,0 +1,4 @@
+- if folder.present?
+  == render partial: 'folders/show', locals: { folder: folder }
+- else
+  == render 'home/index'
