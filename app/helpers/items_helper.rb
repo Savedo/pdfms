@@ -31,7 +31,7 @@ module ItemsHelper
   def build_item_form_options(item)
     {
       url: build_item_form_url(item),
-      remote: item.persisted? || !item.is_a?(Template)
+      remote: true
     }
   end
 
