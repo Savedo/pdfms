@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :selectors
   resources :profiles
-  root 'home#index'
+  root 'root#index'
   resources :folders do
     resources :stacks, only: %i(new create)
     resources :templates, only: %i(new create)

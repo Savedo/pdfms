@@ -14,10 +14,17 @@ html
             span class="icon-bar"
             span class="icon-bar"
           = link_to "PdfCms", root_url, class: 'navbar-brand'
-        .navbar-right.navbar-form
-          .form-group = link_to "Root", root_path, class: 'btn btn-default', remote: true
-          .form-group = link_to "Profiles", profiles_path, class: 'btn btn-default', remote: true
+        #navbar.navbar-collapse.collapse
+          ul.nav.navbar-nav.navbar-right
+            li class="#{ 'active' if controller.is_a?(ContentController) }" = link_to 'Content', root_path
+            li class="#{ 'active' if controller.is_a?(ProfilesController) }" = link_to 'Profiles', profiles_path
+            li = link_to 'Users', profiles_path
+          form.navbar-form.navbar-right
+            input.form-control type="text" placeholder="Search..."
     .container-fluid
       .row
-        .col-sm-6.col-md-3.sidebar = build_and_render_content_tree
-        .col-sm-6.col-sm-offset-6.col-md-9.col-md-offset-3.main = yield
+        - if controller.is_a?(ContentController)
+          .col-sm-6.col-md-3.sidebar = build_and_render_content_tree
+          .col-sm-6.col-sm-offset-6.col-md-9.col-md-offset-3.main = yield
+        - else
+          .col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-3.main = yield

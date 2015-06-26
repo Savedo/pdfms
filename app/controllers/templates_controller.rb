@@ -1,4 +1,4 @@
-class TemplatesController < ApplicationController
+class TemplatesController < ContentController
   include FoldableItemController
 
   before_action :set_template, only: [:show, :edit, :update, :destroy, :pdf, :source]

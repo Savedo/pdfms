@@ -1,4 +1,4 @@
-class StacksController < ApplicationController
+class StacksController < ContentController
   include FoldableItemController
 
   before_action :set_stack, only: [:show, :edit, :update, :destroy]

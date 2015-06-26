@@ -1,4 +1,4 @@
-class SelectorsController < ApplicationController
+class SelectorsController < ContentController
   include FoldableItemController
 
   before_action :set_selector, only: [:show, :edit, :update, :destroy]

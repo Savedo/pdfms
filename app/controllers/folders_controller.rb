@@ -1,4 +1,4 @@
-class FoldersController < ApplicationController
+class FoldersController < ContentController
   include FoldableItemController
 
   before_action :set_folder, only: [:show, :edit, :update, :destroy]
